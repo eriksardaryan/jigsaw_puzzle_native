@@ -6,6 +6,7 @@ module.exports = {
     './components/**/*.{js,jsx,ts,tsx}',
     './hooks/**/*.{js,jsx,ts,tsx}',
   ],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
   presets: [require('nativewind/preset')],
   theme: {
     extend: {},
