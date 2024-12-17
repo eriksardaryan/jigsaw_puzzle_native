@@ -80,6 +80,15 @@ export function GameScreen() {
     }
   };
 
+  const newGame = () => {
+    setTiles(shuffleArray([...initialTiles]));
+    setMoveCount(0);
+    setStartTime(null);
+    setElapsedTime(0);
+    setPrize(null);
+    clearInterval(intervalId);
+  };
+
   return (
     <View className="flex-1 justify-center items-center bg-gray-100">
       <Text className="text-xl font-bold mb-4">Jigsaw Puzzle Game</Text>
@@ -99,6 +108,19 @@ export function GameScreen() {
             {tile !== 0 && <Text className="text-lg font-semibold text-gray-800">{tile}</Text>}
           </TouchableOpacity>
         ))}
+      </View>
+
+      <View className="flex flex-row mt-4">
+        <TouchableOpacity
+          className={clsx(
+            'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4',
+            { 'opacity-50 cursor-not-allowed': moveCount === 0 }
+          )}
+          onPress={newGame}
+          disabled={moveCount === 0}
+        >
+          New Game
+        </TouchableOpacity>
       </View>
 
       {isSolved && (
